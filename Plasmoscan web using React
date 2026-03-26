@@ -1,0 +1,156 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+// ---------- Navbar ----------
+const Navbar = () => (
+  <nav className="navbar">
+    <h2 className="logo">PlasmoScan</h2>
+    <div className="links">
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
+    </div>
+  </nav>
+);
+
+// ---------- Home ----------
+const Home = () => (
+  <div className="container">
+    <h1>Smart Malaria Detection System</h1>
+    <p>
+      PlasmoScan detects malaria in seconds using AI-powered image analysis.
+      Upload blood smear images and get instant diagnostic reports.
+    </p>
+    <button className="btn">Get Started</button>
+  </div>
+);
+
+// ---------- About ----------
+const About = () => (
+  <div className="container">
+    <h1>About PlasmoScan</h1>
+    <p>
+      PlasmoScan is an AI-based platform designed to detect malaria quickly and accurately.
+      It reduces dependency on manual microscopy and speeds up diagnosis.
+    </p>
+    <ul>
+      <li>AI-powered detection</li>
+      <li>Fast and accurate results</li>
+      <li>Visual diagnostic reports</li>
+      <li>Infection rate calculation</li>
+    </ul>
+  </div>
+);
+
+// ---------- Contact ----------
+const Contact = () => (
+  <div className="container">
+    <h1>Contact Us</h1>
+    <form className="form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required />
+      <button className="btn">Send Message</button>
+    </form>
+  </div>
+);
+
+// ---------- App ----------
+export default function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+
+      {/* CSS */}
+      <style>{`
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background: #f5f7fa;
+        }
+
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 40px;
+          background: #0b3d91;
+          color: white;
+        }
+
+        .logo {
+          margin: 0;
+        }
+
+        .links a {
+          margin: 0 10px;
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        .links a:hover {
+          text-decoration: underline;
+        }
+
+        .container {
+          text-align: center;
+          padding: 50px 20px;
+        }
+
+        h1 {
+          color: #0b3d91;
+        }
+
+        p {
+          max-width: 600px;
+          margin: 10px auto;
+          color: #333;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        ul li {
+          margin: 10px 0;
+        }
+
+        .btn {
+          margin-top: 20px;
+          padding: 10px 20px;
+          background: #ff6b6b;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .btn:hover {
+          background: #ff4c4c;
+        }
+
+        .form {
+          display: flex;
+          flex-direction: column;
+          max-width: 400px;
+          margin: auto;
+        }
+
+        .form input,
+        .form textarea {
+          margin: 10px 0;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      `}</style>
+    </Router>
+  );
+}
